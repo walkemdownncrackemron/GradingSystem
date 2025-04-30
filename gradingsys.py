@@ -3,17 +3,14 @@ from logging import exception
 from math import trunc
 
 def show_history() -> None:
-    print("\n === Brief History of Python ==")
-    print("\n === Created in the year 1991 ==")
-    print("\n === Python 3 in the year 2008 ==")
-    print("\n*** Program that Computes the average score of students ***")
+    print("\n*** Average score of students ***")
 
 def get_names_score() -> tuple[list[str], list[float]]:
     while True:
         try:
-            student_count = int(input("Number of students: "))
+            student_count = int(input("Num of students: "))
             if student_count <= 0:
-                print("Please enter a number greater than zero")
+                print("Please enter a num greater than 0")
                 continue
             break
         except ValueError:
@@ -21,7 +18,7 @@ def get_names_score() -> tuple[list[str], list[float]]:
     
     names_of_students = []
     scores = []
-    print("\nEnter student names and their scores:")
+    print("\nEnter student names and scores:")
     
     for i in range(student_count):
         name = input(f"Student {i + 1} name: ").strip()
@@ -31,12 +28,12 @@ def get_names_score() -> tuple[list[str], list[float]]:
         
         while True:
             try:
-                score = float(input(f"Enter the score for {name}: "))
+                score = float(input(f"Enter score for {name}: "))
                 if 0 <= score <= 100:
                     scores.append(score)
                     break
                 else:
-                    print("Score must be between 0 and 100")
+                    print("Score must be 0-100")
             except ValueError:
                 print("Invalid Input")
     
@@ -47,12 +44,12 @@ if __name__ == "__main__":
     names, scores = get_names_score()
     if scores:
         average = sum(scores) / len(scores)
-        print("\nCollected student scores:")
+        print("\nCollected scores:")
         for name, score in zip(names, scores):
             print(f"{name}: {score}")
         print(f"\nAverage score: {average:.2f}")
     else:
-        print("No scores to calculate an average.")
+        print("No scores to calculate avg.")
 
 def calculate_average(scores: list[float]) -> float:
     if not scores:
